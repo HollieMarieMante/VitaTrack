@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { auth, provider } from '../../config/firebaseConfig';
 import {signInWithPopup} from 'firebase/auth';
 import { useNavigate , Navigate} from 'react-router-dom';
-import { useGetUserInfo } from '../../hookd/useGetUserInfo';
+import { useGetUserInfo } from '../../hooks/useGetUserInfo';
 export default function Auth(){
     const navigate = useNavigate();
    const {isAuth} = useGetUserInfo();
@@ -26,7 +26,7 @@ export default function Auth(){
     return(
          <div className="Auth">
             <div className="login-page">
-                <p> Sign in wiith google to continue</p>
+                <p> Sign in with Google to continue</p>
                 <button onClick={signInWithGoogle}> SignIn with Google </button>
             </div>
          </div>

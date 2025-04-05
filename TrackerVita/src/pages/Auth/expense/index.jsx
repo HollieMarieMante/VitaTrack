@@ -1,7 +1,7 @@
 import React, { useState, useTransition } from 'react'
-import {  useAddTransaction } from '../../../hookd/useAddTransaction'
-import { useGetTransactions } from '../../../hookd/useGetTransactions';
-import { useGetUserInfo } from '../../../hookd/useGetUserInfo';
+import {  useAddTransaction } from '../../../hooks/useAddTransaction'
+import { useGetTransactions } from '../../../hooks/useGetTransactions';
+import { useGetUserInfo } from '../../../hooks/useGetUserInfo';
 import { auth } from '../../../config/firebaseConfig';
 import { Navigate, useNavigate } from 'react-router-dom';
 
