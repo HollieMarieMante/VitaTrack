@@ -1,35 +1,98 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Navbar from "./components/Navbar";
+import { useEffect, useState } from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
+import Landing from "./pages/Landing";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Welcome from "./pages/user/Welcome";
+import Dashboard from "./pages/admin/Dashboard";
+import UserManagement from "./pages/admin/UserManagement";
+import Expenses from "./pages/user/Expenses";
+import Mood from "./pages/user/Mood";
+import Tasks from "./pages/user/Tasks";
+
+function AppWrapper() {
+  const location = useLocation();
+  const [showNavbar, setShowNavbar] = useState(true);
+
+  useEffect(() => {
+    const hideNavbarOn = ["/", "/signup", "/login"];
+    setShowNavbar(!hideNavbarOn.includes(location.pathname));
+  }, [location]);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {showNavbar && <Navbar />}
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+
+        <Route
+          path="/welcome"
+          element={
+            <ProtectedRoute allowedRoles={["user"]}>
+              <Welcome />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/expenses"
+          element={
+            <ProtectedRoute allowedRoles={["user"]}>
+              <Expenses />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/mood"
+          element={
+            <ProtectedRoute allowedRoles={["user"]}>
+              <Mood />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/tasks"
+          element={
+            <ProtectedRoute allowedRoles={["user"]}>
+              <Tasks />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute allowedRoles={["admin"]}>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/user-management"
+          element={
+            <ProtectedRoute allowedRoles={["admin"]}>
+              <UserManagement />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+function App() {
+  return (
+    <Router>
+      <AuthProvider>
+        <AppWrapper />
+      </AuthProvider>
+    </Router>
+  );
+}
+
+export default App;
