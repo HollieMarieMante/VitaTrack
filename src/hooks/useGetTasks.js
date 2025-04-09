@@ -10,13 +10,10 @@ export const useGetTasks = () => {
   useEffect(() => {
     if (!user) return;
 
-    // Reference to the tasks collection
     const taskRef = collection(db, "trackers", user.uid, "tasks");
 
-    // Create a query to order tasks by date
     const q = query(taskRef, orderBy("date", "desc"));
 
-    // Set up the real-time listener
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const tasksArray = [];
       querySnapshot.forEach((doc) => {
@@ -24,10 +21,9 @@ export const useGetTasks = () => {
         tasksArray.push({ id: doc.id, ...data });
       });
 
-      setTasks(tasksArray); // Update state with the new tasks
+      setTasks(tasksArray);
     });
 
-    // Clean up the listener when the component is unmounted
     return () => unsubscribe();
   }, [user]);
 
