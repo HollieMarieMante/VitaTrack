@@ -5,16 +5,15 @@ import { useAuth } from "../context/AuthContext";
 export const useAddTransaction = () => {
   const { user } = useAuth();
 
-  const addTransaction = async ({ description, transactionAmount, transactionType }) => {
+  const addTransaction = async ({ description, transactionAmount, type }) => {
     if (!user) return;
 
     try {
-      // Add transaction to Firestore (expenses subcollection)
       const transactionRef = collection(db, "trackers", user.uid, "expenses");
       await addDoc(transactionRef, {
         description,
-        transactionAmount: parseFloat(transactionAmount),
-        transactionType,
+        amount: parseFloat(transactionAmount),
+        type,
         date: new Date(),
       });
     } catch (err) {

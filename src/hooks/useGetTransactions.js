@@ -9,11 +9,10 @@ export const useGetTransactions = () => {
   const [transactionTotal, setTransactionTotal] = useState({ balance: 0, income: 0, expense: 0 });
 
   useEffect(() => {
-    if (!user) return; // Ensure user is available
+    if (!user) return;
 
     const q = query(collection(db, "trackers", user.uid, "expenses"));
 
-    // Real-time listener for transactions
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const transactionsArray = [];
       let balance = 0;
@@ -24,7 +23,6 @@ export const useGetTransactions = () => {
         const data = doc.data();
         transactionsArray.push(data);
 
-        // Update totals based on transaction type
         if (data.transactionType === "income") {
           income += data.transactionAmount;
           balance += data.transactionAmount;
@@ -38,9 +36,8 @@ export const useGetTransactions = () => {
       setTransactionTotal({ balance, income, expense });
     });
 
-    // Cleanup the listener on component unmount or user change
     return () => unsubscribe();
-  }, [user]); // Only run when the user changes
-
+  }, [user]);
+  
   return { transactions, transactionTotal };
 };
