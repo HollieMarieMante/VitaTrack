@@ -19,11 +19,6 @@ const Navbar = () => {
     }
   };
 
-  function getFirstName(str) {
-    const words = str.trim().split(" ");
-    return words[0];
-  }
-
   const getFallbackName = () => {
     if (!user) return "User";
     if (user.displayName) return user.displayName;
