@@ -3,6 +3,7 @@ import { auth, db, googleProvider } from "../firebase/config";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -32,6 +33,7 @@ const Login = () => {
       // If the user doesn't exist in the database, add them
       if (!userDoc.exists()) {
         await setDoc(userRef, {
+          display_name: user.displayName,
           email: user.email,
           role: "user",
           isBlocked: false
@@ -53,8 +55,8 @@ const Login = () => {
         <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
         <button type="submit">Login</button>
       </form>
-      <p>Dont have an account yet? <a href="/signup">Sign up here!</a></p>
-      <button onClick={handleGoogleLogin}>Login with Google</button>
+      <p>Don't have an account yet? <Link to="/signup">Sign up here!</Link></p>
+      <button onClick={handleGoogleLogin}>Continue with Google</button>
     </div>
   );
 };

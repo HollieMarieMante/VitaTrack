@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Landing = () => {
+    
     return (
         <>
             <h1>Track every moment.</h1>

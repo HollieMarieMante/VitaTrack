@@ -1,9 +1,17 @@
 .navbar {
+  justify-content: space-between;
   display: flex;
   gap: 1rem;
   padding: 1rem;
   background: #f4f4f4;
   border-bottom: 1px solid #ccc;
+}
+
+.navbar-options{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  gap: 1rem;
 }
 
 .user-table {
