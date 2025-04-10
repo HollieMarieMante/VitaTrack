@@ -3,7 +3,7 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-  const { user, role, logout, loading } = useAuth();
+  const { role, logout, loading } = useAuth();
   const navigate = useNavigate();
 
   if(loading){
@@ -19,19 +19,11 @@ const Navbar = () => {
     }
   };
 
-  const getFallbackName = () => {
-    if (!user) return "User";
-    if (user.displayName) return user.displayName;
-    if (user.email) return user.email.split("@")[0];
-    return "User";
-  };
-
-  const display = getFallbackName();
-
   return (
     <nav className="navbar">
-      <div>
-        <p>{display}</p>
+      <div className="navbar-logo">
+        <img height="auto" width={45} src="/logo.png" alt="checklist" />
+        <p>itaTrack</p>
       </div>
       
       <div className="navbar-options">
@@ -42,10 +34,10 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <Link to="/welcome">Home</Link>
-            <Link to="/expenses">Expenses</Link>
-            <Link to="/mood">Mood</Link>
-            <Link to="/tasks">Tasks</Link>
+            <Link to="/welcome" className="link-style">Home</Link>
+            <Link to="/expenses" className="link-style">Expenses</Link>
+            <Link to="/mood" className="link-style">Mood</Link>
+            <Link to="/tasks" className="link-style">Tasks</Link>
           </>
         )}
         <button onClick={handleLogout}>Sign Out</button>

@@ -1,0 +1,122 @@
+.tasks-tracker {
+    padding: 2.5vh 5vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 85vh;
+  }
+  
+  .tasks-body {
+    display: flex;
+    flex-direction: row;
+    min-height: 67vh;
+  }
+  
+  .tasks-tracker h2 {
+    font-size: 50px;
+  }
+  
+  .tasks-tracker form {
+    margin-top: 1rem;
+    width: 70vh;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+  
+  .tasks-tracker textarea {
+    resize: none;
+    width: 21rem;
+    height: 10rem;
+    padding: 4px;
+  }
+  
+  .tasks-tracker select {
+    padding: 4px;
+  }
+  
+  .tasks-tracker input {
+    padding: 4px;
+  }
+  
+  .task-list {
+    background-color:  transparent;
+    border-radius: 1rem;
+    margin-left: 1rem; 
+    width: 100%;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    list-style: none;
+    overflow-y: scroll;
+  }
+  
+  .task-tile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    background:  #f8f9f9;
+    border: 1px solid #2c3e50;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+  }
+  
+  .task-tile:hover {
+    transform: translateY(-2px);
+  }
+  
+  .task-tile.completed {
+    opacity: 0.6;
+  }
+  
+  .task-tile.completed h4,
+  .task-tile.completed .description {
+    text-decoration: line-through;
+  }
+  
+  .task-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+  }
+  
+  .task-header h4 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  
+  .description {
+    color: #555;
+    margin: 8px 0;
+    font-size: 15px;
+  }
+  
+  .priority {
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+  
+  .priority.High {
+    color: #e74c3c;
+  }
+  
+  .priority.Medium {
+    background-color: #f1c40f;
+    color: #000;
+  }
+  
+  .priority.Low {
+    color: #2ecc71;
+  }
+
+  .tasks-body h2 {
+    color:  #f39c12;
+  }

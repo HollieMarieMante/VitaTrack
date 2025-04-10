@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import "../styles/Welcome.css"
 
 const Welcome = () => {
     const { user, loading } = useAuth();
@@ -27,12 +28,12 @@ const Welcome = () => {
       const nickname = getFallbackName();
 
     return (
-        <>
-            <h1>Welcome {nickname || "User"}!</h1>
-            <h4>WELCOME BACK! STAY ON TOP OF YOUR EXPENSES, 
+        <div className="welcome-body">
+            <h1>Welcome, {nickname || "User"}!</h1>
+            <p>WELCOME BACK! STAY ON TOP OF YOUR EXPENSES, 
             MOODS, EVENTS, AND TASKS—ALL IN ONE PLACE. LET'S 
             MAKE TODAY PRODUCTIVE AND BALANCED. YOU'VE 
-            GOT THIS! 👍 ✨</h4>
+            GOT THIS! 👍 ✨</p>
 
             <div>
                 <Link to="/expenses">
@@ -47,7 +48,7 @@ const Welcome = () => {
                     <button>Tasks tracker</button>
                 </Link>
             </div>
-        </>
+        </div>
     )
 }
 

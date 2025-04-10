@@ -37,7 +37,7 @@ const Signup = () => {
         <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
         <button type="submit">Sign Up</button>
       </form>
-      <p>Don't have an account yet? <Link to="/login">Login here!</Link></p>
+      <p>Already had an account? <Link to="/login">Login here!</Link></p>
     </div>
   );
 };

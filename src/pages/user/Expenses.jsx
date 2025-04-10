@@ -62,6 +62,7 @@ const Expenses = () => {
             value={transAmount}
             required
             onChange={(e) => setTransAmount(e.target.value)}
+            className="no-spinner"
           />
           <div>
             <input

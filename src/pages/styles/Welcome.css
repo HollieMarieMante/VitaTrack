@@ -1,0 +1,23 @@
+.welcome-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: 90vh;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    background: linear-gradient(to top,  #d5d8dc , white);
+}
+
+.welcome-body h1 {
+    font-size: 5rem;
+    color:     #f39c12 ;
+}
+
+.welcome-body p {
+    width: 45%;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+}

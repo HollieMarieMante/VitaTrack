@@ -1,0 +1,68 @@
+.landing-body {
+    background-image: url('/landing-page-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.landing-body h1 {
+    font-size: 60px;
+    color:  #5b2c6f ;
+}
+
+.checklist-img {
+    height: 35rem;
+}
+
+.landing-body button {
+    background-color: transparent;
+    color: black;
+    border: 1px solid #5b2c6f;
+    transition: transform 0.3s ease;
+    margin: 1rem 0;
+}
+
+.landing-body button:hover {
+    transform: scale(1.1);
+    background-color:  #c39bd3;
+    box-shadow: 0 0 15px 5px rgba(210, 180, 222, 0.7);
+}
+
+.landing-middle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 95%;
+    width: inherit;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    height: 5%;
+    width: inherit;
+    padding: 2rem;
+}
+
+.navbar-logo {
+    margin-left: 8rem;
+    margin-top: 2rem;
+}
+
+.navbar-button {
+    margin-right: 15rem;
+    margin-top: 2rem;
+}
+
+.navbar-button button {
+    background-color: #c39bd3;
+    border: 0px;
+    color: #5b2c6f;
+}
