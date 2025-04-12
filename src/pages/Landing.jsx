@@ -4,8 +4,9 @@ import "./styles/Landing.css"
 const Landing = () => {
     
     return (
-        <div className="landing-body">
-            <div className="navbar">
+        <>
+        
+        <div className="navbar">
                 <div className="navbar-logo">
                     <img height="auto" width={45} src="/logo.png" alt="checklist" />
                     <p>itaTrack</p>
@@ -20,6 +21,7 @@ const Landing = () => {
                 </div>
             </div>
 
+        <div className="landing-body">
             <div className="landing-middle">
                 <div>
                     <h1>Track every moment.</h1>
@@ -41,6 +43,8 @@ const Landing = () => {
             </div>
 
         </div>
+        
+        </>
     )
 }
 

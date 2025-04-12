@@ -12,8 +12,8 @@ export const useAddTransaction = () => {
       const transactionRef = collection(db, "trackers", user.uid, "expenses");
       await addDoc(transactionRef, {
         description,
-        amount: parseFloat(transactionAmount),
-        type,
+        transactionAmount: parseFloat(transactionAmount),
+        transactionType: type,
         date: new Date(),
       });
     } catch (err) {

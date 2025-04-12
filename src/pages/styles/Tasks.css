@@ -1,8 +1,16 @@
 .tasks-tracker {
-    padding: 2.5vh 5vh;
+    padding-top: 15vh;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    padding-bottom: 10vh;
     display: flex;
     flex-direction: column;
-    min-height: 85vh;
+    max-height: 100vh;
+    width: 100vw;
+    background-image: url('/tasks-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
   
   .tasks-body {
@@ -120,3 +128,25 @@
   .tasks-body h2 {
     color:  #f39c12;
   }
+
+  /* Scrollbar styles */
+.task-list::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.task-list::-webkit-scrollbar-track {
+  background: #f1f1f1; /* light gray background */
+  border-radius: 10px;
+}
+
+.task-list::-webkit-scrollbar-thumb {
+  background-color: #5b2c6f; /* your desired purple */
+  border-radius: 10px;
+  border: 2px solid #f1f1f1; /* optional border for spacing */
+}
+
+/* Optional: hover effect */
+.task-list::-webkit-scrollbar-thumb:hover {
+  background-color: #4a235a; /* darker purple on hover */
+}

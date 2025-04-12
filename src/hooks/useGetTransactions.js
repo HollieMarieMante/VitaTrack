@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { db } from "../firebase/config";
-import { collection, query, onSnapshot } from "firebase/firestore"; // Import onSnapshot
+import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
 import { useAuth } from "../context/AuthContext";
 
 export const useGetTransactions = () => {
@@ -11,7 +11,8 @@ export const useGetTransactions = () => {
   useEffect(() => {
     if (!user) return;
 
-    const q = query(collection(db, "trackers", user.uid, "expenses"));
+    const transactionRef = collection(db, "trackers", user.uid, "expenses");
+    const q = query(transactionRef, orderBy("date", "desc"));
 
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const transactionsArray = [];
@@ -21,7 +22,8 @@ export const useGetTransactions = () => {
 
       querySnapshot.forEach((doc) => {
         const data = doc.data();
-        transactionsArray.push(data);
+        const transaction = { id: doc.id, ...data };
+        transactionsArray.push(transaction);
 
         if (data.transactionType === "income") {
           income += data.transactionAmount;
@@ -38,6 +40,6 @@ export const useGetTransactions = () => {
 
     return () => unsubscribe();
   }, [user]);
-  
+
   return { transactions, transactionTotal };
 };

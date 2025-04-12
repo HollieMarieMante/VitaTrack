@@ -44,6 +44,8 @@ button {
   padding-top: 2rem;
   color: #212f3c;
   background-color: transparent;
+  position: absolute;
+  z-index: 99999;
 }
 
 .navbar p {
@@ -56,6 +58,7 @@ button {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
 }
 
 .navbar-options {
@@ -66,16 +69,18 @@ button {
 
 button {
   margin-top: 10px;
-  background-color: #3498db;
+  background-color: #5b2c6f;
   border: none;
   color: white;
   padding: 6px 12px;
   border-radius: 6px;
   cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
 button:hover {
-  background-color: #2874a6;
+  transform: scale(1.1);
+  opacity: .7;
 }
 
 

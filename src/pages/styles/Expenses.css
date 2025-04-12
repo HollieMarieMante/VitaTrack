@@ -1,0 +1,90 @@
+.expense-tracker {
+    background-image: url('/expenses-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    padding-top: 15vh;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    flex-direction: row;
+    gap: 5vw;
+}
+
+.expense-tracker h2 {
+    font-size: 50px;
+    color: #f39c12;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+}
+
+.container input {
+    padding: 5px;
+}
+
+#income {
+    margin-left: 1vw;
+    margin-right: .5rem;
+}
+
+#expense {
+    margin-right: .5rem;
+}
+
+.add-transaction {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+.transactions {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+}
+
+.transaction-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+  
+.transaction-table th, 
+.transaction-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+  
+.transaction-table thead tr {
+    background-color: #f2f2f2;
+}
+  
+.expense {
+    color: red;
+}
+  
+.income {
+    color: green;
+}
+
+.transactions h3 {
+    font-size: 50px;
+}
+
+.delete-word{
+    color: inherit;
+    transition: transform 0.3s ease;
+    margin-left: 1rem;
+}
+
+.delete-word:hover {
+    color: red;
+    cursor: pointer;
+    transform: scale(1.1);
+}

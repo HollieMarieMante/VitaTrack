@@ -65,4 +65,11 @@
     background-color: #c39bd3;
     border: 0px;
     color: #5b2c6f;
+    transition: transform 0.3s ease;
+}       
+
+.navbar-button button:hover {
+    transform: scale(1.1);
+    background-color:  #c39bd3;
+    box-shadow: 0 0 15px 5px rgba(210, 180, 222, 0.7);
 }
