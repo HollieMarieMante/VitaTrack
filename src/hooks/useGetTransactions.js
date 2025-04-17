@@ -7,6 +7,7 @@ export const useGetTransactions = () => {
   const { user } = useAuth();
   const [transactions, setTransactions] = useState([]);
   const [transactionTotal, setTransactionTotal] = useState({ balance: 0, income: 0, expense: 0 });
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!user) return;
@@ -36,10 +37,11 @@ export const useGetTransactions = () => {
 
       setTransactions(transactionsArray);
       setTransactionTotal({ balance, income, expense });
+      setLoading(false);
     });
 
     return () => unsubscribe();
   }, [user]);
 
-  return { transactions, transactionTotal };
+  return { transactions, transactionTotal, isLoading };
 };

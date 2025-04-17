@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import "../styles/Welcome.css"
+import Loading from "../../components/Loading";
 
 const Welcome = () => {
     const { user, loading } = useAuth();
@@ -11,7 +12,7 @@ const Welcome = () => {
     }
 
     if(loading) {
-        return <p>Loading...</p>
+        return <Loading/>
     }
 
     if (!user) {

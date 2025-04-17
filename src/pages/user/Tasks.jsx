@@ -3,10 +3,11 @@ import { useAddTask } from "../../hooks/useAddTask";
 import { useGetTasks } from "../../hooks/useGetTasks";
 import { useUpdateTask } from "../../hooks/useUpdateTask";
 import { useDeleteTask } from "../../hooks/useDeleteTask";
+import Loading from "../../components/Loading";
 import "../styles/Tasks.css";
 
 const Tasks = () => {
-  const { tasks } = useGetTasks();
+  const { tasks, loading } = useGetTasks();
   const { addTask } = useAddTask();
   const { updateTask } = useUpdateTask();
   const { deleteTask } = useDeleteTask();
@@ -37,6 +38,8 @@ const Tasks = () => {
   const handleDeleteTask = (taskId) => {
     deleteTask(taskId);
   };
+
+  if(loading) return <Loading/>
 
   return (
     <div className="tasks-tracker">

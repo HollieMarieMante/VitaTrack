@@ -4,13 +4,14 @@ import { useGetTransactions } from "../../hooks/useGetTransactions";
 import { useAuth } from "../../context/AuthContext";
 import { useDeleteTransaction } from "../../hooks/useDeleteTransaction";
 import "../styles/Expenses.css";
+import Loading from "../../components/Loading";
 
 const Expenses = () => {
   const [descript, setDescript] = useState("");
   const [transAmount, setTransAmount] = useState(0);
   const [transType, setTransType] = useState("expense");
   const { addTransaction } = useAddTransaction();
-  const { transactions, transactionTotal } = useGetTransactions();
+  const { transactions, transactionTotal, isLoading } = useGetTransactions();
   const { loading } = useAuth();
   const { deleteTransaction } = useDeleteTransaction();
 
@@ -40,8 +41,8 @@ const Expenses = () => {
     setDescript("");
     setTransAmount(0);
   };
-  if (loading) {
-    return <div>Loading...</div>;
+  if (loading || isLoading) {
+    return <Loading />;
   }
 
   return (

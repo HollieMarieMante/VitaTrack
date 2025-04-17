@@ -5,6 +5,7 @@ import { useAddMood } from "../../hooks/useAddMood";
 import { useGetMoods } from "../../hooks/useGetMoods";
 import MoodModal from "../../components/MoodModal";
 import "../styles/Moods.css"
+import Loading from "../../components/Loading";
 
 const moodColors = {
   Happy: "#FFD700",
@@ -19,7 +20,7 @@ const moodColors = {
 
 const Mood = () => {
   const { addMood } = useAddMood();
-  const { moods } = useGetMoods();
+  const { moods, loading } = useGetMoods();
 
   const [date, setDate] = useState(new Date());
   const [selectedMood, setSelectedMood] = useState("");
@@ -63,6 +64,8 @@ const Mood = () => {
       setNote("");
     }
   }, [dateKey, moods]);
+
+  if(loading) return <Loading/>;
 
   return (
     <div className="mood-page">

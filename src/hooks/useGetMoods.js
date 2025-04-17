@@ -6,6 +6,7 @@ import { useAuth } from "../context/AuthContext";
 export const useGetMoods = () => {
   const { user } = useAuth();
   const [moods, setMoods] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!user) return;
@@ -19,10 +20,11 @@ export const useGetMoods = () => {
       });
 
       setMoods(moodsData);
+      setLoading(false);
     });
 
     return () => unsubscribe();
   }, [user]);
 
-  return { moods };
+  return { moods, loading };
 };

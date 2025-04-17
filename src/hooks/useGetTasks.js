@@ -6,6 +6,7 @@ import { useAuth } from "../context/AuthContext";
 export const useGetTasks = () => {
   const { user } = useAuth();
   const [tasks, setTasks] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!user) return;
@@ -22,10 +23,16 @@ export const useGetTasks = () => {
       });
 
       setTasks(tasksArray);
-    });
+      setLoading(false);
+    },
+    (error) => {
+      console.error("Error fetching tasks:", error);
+      setLoading(false); // Even if there's an error, stop loading
+    }
+  );
 
     return () => unsubscribe();
   }, [user]);
 
-  return { tasks };
+  return { tasks, loading };
 };
