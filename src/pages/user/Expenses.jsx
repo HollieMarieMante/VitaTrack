@@ -54,7 +54,7 @@ const Expenses = () => {
           {transactionTotal.balance > 0 ? (
             <h1>₱{transactionTotal.balance}</h1>
           ) : (
-            <h1>-₱{Math.abs(transactionTotal.balance)}</h1>
+            <h1>₱{Math.abs(transactionTotal.balance)}</h1>
           )}
         </div>
         <div className="summary">
